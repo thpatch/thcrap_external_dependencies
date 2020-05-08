@@ -1,0 +1,21 @@
+[submodule "dr_libs"]
+	path = dr_libs
+	url = https://github.com/mackron/dr_libs.git
+[submodule "jansson"]
+	path = jansson
+	url = https://github.com/akheron/jansson.git
+[submodule "libmpg123"]
+	path = libmpg123
+	url = https://github.com/nmlgc/libmpg123.git
+[submodule "libpng"]
+	path = libpng
+	url = https://github.com/glennrp/libpng.git
+[submodule "ogg"]
+	path = ogg
+	url = https://github.com/xiph/ogg.git
+[submodule "vorbis"]
+	path = vorbis
+	url = https://github.com/xiph/vorbis.git
+[submodule "zlib-ng"]
+	path = zlib-ng
+	url = https://github.com/Dead2/zlib-ng.git
