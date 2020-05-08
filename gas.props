@@ -12,7 +12,7 @@
     <GASPath Condition= "'$(GASPATH)' == ''">$(SolutionDir)</GASPath>
     <!-- Since environment variables aren't expanded in Switch attributes of
        - MSBuild properties… -->
-    <SAFESEHSwitch Condition="$(SAFESEH)==true">/Fx $(SolutionDir)safeseh.h</SAFESEHSwitch>
+    <SAFESEHSwitch Condition="$(SAFESEH)==true">/Fx $(GASPath)safeseh.h</SAFESEHSwitch>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <GAS>
