@@ -19,3 +19,6 @@
 [submodule "zlib-ng"]
 	path = zlib-ng
 	url = https://github.com/Dead2/zlib-ng.git
+[submodule "googletest"]
+	path = googletest
+	url = https://github.com/google/googletest.git
