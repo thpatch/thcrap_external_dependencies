@@ -11,6 +11,9 @@ rem The Configure script doensn't let you remove the '-f win32' parameter from t
 powershell -Command "(gc makefile) -replace 'win32n', 'gaswin' | Out-File -encoding ASCII makefile"
 rem OpenSSL doesn't have any asm files, it generates them at build time from Perl scripts that spell out Assembler instructions. These scripts can generate asm files for both NASM and GAS. Passing the win32n parameter to them will generate a NASM file, and gaswin will create a GAS file. The Configure script doesn't let you change win32n to gaswin, so it has to be done with PowerShell as well.
 
+powershell -Command "(gc crypto\rand\rand_win.c) -replace '#  define USE_BCRYPTGENRANDOM', '' | Out-File -encoding ASCII crypto\rand\rand_win.c"
+rem Make sure OpenSSL does not use bcrypt, instead relying on the old wincrypt. This is absolutely crucial for Windows XP support
+
 nmake
 cd ..
 copy openssl\libcrypto.lib bin\libcrypto.lib
