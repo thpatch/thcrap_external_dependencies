@@ -1,7 +1,7 @@
 rem OpenSSL
 
 cd openssl
-perl Configure VC-WIN32 AS="..\i686-w64-mingw32-as.exe" CFLAGS="/W3 /wd4090 /nologo /O2 /D _USING_V110_SDK71_"
+perl Configure VC-WIN32 AS="cl /Fx ..\safeseh.h nologo | ..\i686-w64-mingw32-as.exe" CFLAGS="/W3 /wd4090 /nologo /O2 /D _USING_V110_SDK71_"
 
 rem The following PowerShell commands edit the makefile after it has been generated for reasons explained below the command. In theory this would make it smarter to write a PowerShell script instead, but PowerShell doesn't let you run unsigned/selfsigned scripts by default.
 
@@ -13,5 +13,7 @@ rem OpenSSL doesn't have any asm files, it generates them at build time from Per
 
 nmake
 cd ..
-copy openssl\libcrypto_static.lib bin\libcrypto.lib
-copy openssl\libssl_static.lib bin\libssl.lib
+copy openssl\libcrypto.lib bin\libcrypto.lib
+copy openssl\libssl.lib bin\libssl.lib
+copy openssl\libcrypto-1_1.dll bin\libcrypto-1_1.dll
+copy openssl\libssl-1_1.dll bin\libssl-1_1.dll
