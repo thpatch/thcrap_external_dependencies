@@ -22,15 +22,12 @@
     <ProjectGuid>{2B8673B5-A043-4011-9830-7D5005DD37BE}</ProjectGuid>
     <RootNamespace>libcurl</RootNamespace>
   </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
-  </PropertyGroup>
   <ImportGroup Label="PropertySheets">
     <Import Project="Base.props" />
   </ImportGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <PreprocessorDefinitions>CURL_DISABLE_LDAP;USE_OPENSSL;WIN32;_WINDOWS;BUILDING_LIBCURL;CURL_HIDDEN_SYMBOLS;_WIN32_WINNT=0x0600;HAVE_CONFIG_H;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_USRDLL;libcurl_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CURL_DISABLE_LDAP;USE_OPENSSL;WIN32;_WINDOWS;BUILDING_LIBCURL;CURL_HIDDEN_SYMBOLS;_WIN32_WINNT=0x0501;HAVE_CONFIG_H;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_USRDLL;libcurl_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4090;%(DisableSpecificWarnings)</DisableSpecificWarnings>
 	  <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);%(ProjectDir)curl\lib</AdditionalIncludeDirectories>
     </ClCompile>
@@ -39,12 +36,6 @@
       <AdditionalDependencies Condition="$(UseDebugLibraries)!=true">zdll-ng.lib;%(AdditionalDependencies)</AdditionalDependencies>
 	  <AdditionalDependencies>Ws2_32.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-	<PreBuildEvent>
-	    <Message>Editing curl_threads.h</Message>
-		<Command>echo #undef _WIN32_WINNT_VISTA > %(ProjectDir)curl\lib\_curl_threads.h
-type %(ProjectDir)curl\lib\curl_threads.h >> %(ProjectDir)curl\lib\_curl_threads.h
-move /Y %(ProjectDir)curl\lib\_curl_threads.h %(ProjectDir)curl\lib\curl_threads.h</Command>
-	</PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="curl\lib\altsvc.h" />
