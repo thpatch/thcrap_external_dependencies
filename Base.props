@@ -58,6 +58,9 @@
       <AdditionalLibraryDirectories>$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>/PDBALTPATH:%_PDB% %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ImportGroup Label="ExtensionSettings">
     <Import Project="gas.props" />
@@ -65,4 +68,28 @@
   <ImportGroup Label="ExtensionTargets">
     <Import Project="gas.targets" />
   </ImportGroup>
+  <PropertyGroup>
+    <BuildDependsOn>CopyBeforeBuild;$(BuildDependsOn);</BuildDependsOn>
+    <CleanDependsOn>CleanCopiedFiles;$(CleanDependsOn);</CleanDependsOn>
+  </PropertyGroup>
+  <Target Name="CopyBeforeBuild" Condition="'@(CopyFiles)'!=''">
+    <ItemGroup>
+      <FilesToCopy Condition="'%(CopyFiles.OutputFile)'!='' And Exists(%(CopyFiles.Identity))" Include="%(CopyFiles.Identity)" OutputFile="%(CopyFiles.OutputFile)"/>
+      <FilesToCopy Condition="'%(CopyFiles.OutputFolder)'!='' And Exists(%(CopyFiles.Identity))" Include="%(CopyFiles.Identity)" OutputFile="%(CopyFiles.OutputFolder)\%(CopyFiles.RecursiveDir)%(CopyFiles.Filename)%(CopyFiles.Extension)"/>
+    </ItemGroup>
+    <Copy SourceFiles="%(FilesToCopy.Identity)" DestinationFiles="%(FilesToCopy.OutputFile)" SkipUnchangedFiles="true">
+      <Output TaskParameter="CopiedFiles" ItemName="SuccessfullyCopiedFiles" />
+    </Copy>
+    <Message Condition="'@(FilesToCopy)'!=''" Text="Successfully copied @(SuccessfullyCopiedFiles->Count())/@(FilesToCopy->Count()) extra files from project &quot;$(ProjectName)&quot;%0A @(SuccessfullyCopiedFiles,'%0A ')" Importance="High" />
+  </Target>
+  <Target Name="CleanCopiedFiles" Condition="'@(CopyFiles)'!=''">
+    <ItemGroup>
+      <FilesToClean Condition="'%(CopyFiles.OutputFile)'!='' And Exists(%(CopyFiles.OutputFile))" Include="%(CopyFiles.OutputFile)" />
+      <FilesToClean Condition="'%(CopyFiles.OutputFolder)'!='' And Exists('%(CopyFiles.OutputFolder)\%(CopyFiles.RecursiveDir)%(CopyFiles.Filename)%(CopyFiles.Extension)')" Include="%(CopyFiles.OutputFolder)\%(CopyFiles.RecursiveDir)%(CopyFiles.Filename)%(CopyFiles.Extension)" />
+    </ItemGroup>
+    <Delete Condition="Exists(%(FilesToClean.Identity))" Files="%(FilesToClean.Identity)">
+      <Output TaskParameter="DeletedFiles" ItemName="SuccessfullyCleanedFiles" />
+    </Delete>
+    <Message Condition="'@(FilesToClean)'!=''" Text="Successfully cleaned @(SuccessfullyCleanedFiles->Count())/@(FilesToClean->Count()) extra files from project &quot;$(ProjectName)&quot;%0A @(SuccessfullyCleanedFiles,'%0A ')" Importance="High" />
+  </Target>
 </Project>

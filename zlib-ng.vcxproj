@@ -62,16 +62,7 @@
   <ImportGroup Label="PropertySheets">
     <Import Project="Base.props" />
   </ImportGroup>
-  <PropertyGroup>
-    <ExtensionsToDeleteOnClean>$(ProjectDir)\zconf.h;$(ProjectDir)\zlib.h;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
-  </PropertyGroup>
   <ItemDefinitionGroup>
-    <PreBuildEvent>
-      <Command>
-copy /y $(ProjectDir)\zlib-ng\zconf.h.in $(ProjectDir)\zconf.h
-copy /y $(ProjectDir)\zlib-ng\zlib.h $(ProjectDir)\
-%(Command)</Command>
-    </PreBuildEvent>
     <ClCompile>
       <PreprocessorDefinitions>UNALIGNED_OK;ZLIB_COMPAT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="$(BuildZLib1)==true">WITH_GZFILEOP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -128,5 +119,7 @@ copy /y $(ProjectDir)\zlib-ng\zlib.h $(ProjectDir)\
     <None Include="zconf.h" />
     <ResourceCompile Include="zlib-ng\win32\zlib1.rc" />
     <None Include="zlib-ng\win32\zlib.def" />
+    <CopyFiles Include="$(ProjectDir)zlib-ng\zconf.h.in" OutputFile="$(ProjectDir)include\zconf.h" />
+    <CopyFiles Include="$(ProjectDir)zlib-ng\zlib.h" OutputFile="$(ProjectDir)include\zlib.h" />
   </ItemGroup>
 </Project>

@@ -26,17 +26,7 @@
   <ImportGroup Label="PropertySheets">
     <Import Project="Base.props" />
   </ImportGroup>
-  <PropertyGroup>
-    <ExtensionsToDeleteOnClean>$(ProjectDir)\pnglibconf.h;$(ProjectDir)\png.h;$(ProjectDir)\pngconf.h;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
-  </PropertyGroup>
   <ItemDefinitionGroup>
-    <PreBuildEvent>
-      <Command>
-copy /y $(ProjectDir)\libpng\scripts\pnglibconf.h.prebuilt $(ProjectDir)\pnglibconf.h
-copy /y $(ProjectDir)\libpng\png.h $(ProjectDir)\
-copy /y $(ProjectDir)\libpng\pngconf.h $(ProjectDir)\
-%(Command)</Command>
-    </PreBuildEvent>
     <ClCompile>
       <AdditionalIncludeDirectories>$(ZLibIncludeDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BasicRuntimeChecks Condition="$(UseDebugLibraries)==true">EnableFastChecks</BasicRuntimeChecks>
@@ -91,5 +81,8 @@ copy /y $(ProjectDir)\libpng\pngconf.h $(ProjectDir)\
     <ResourceCompile Include="libpng\scripts\pngwin.rc">
       <ExcludedFromBuild Condition="'$(ConfigurationType)'=='StaticLibrary'">true</ExcludedFromBuild>
     </ResourceCompile>
+    <CopyFiles Include="$(ProjectDir)\libpng\scripts\pnglibconf.h.prebuilt" OutputFile="$(ProjectDir)\include\pnglibconf.h" />
+    <CopyFiles Include="$(ProjectDir)\libpng\png.h" OutputFile="$(ProjectDir)\include\png.h" />
+    <CopyFiles Include="$(ProjectDir)\libpng\pngconf.h" OutputFile="$(ProjectDir)\include\pngconf.h" />
   </ItemGroup>
 </Project>

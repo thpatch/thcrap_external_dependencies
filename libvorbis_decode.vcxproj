@@ -99,5 +99,6 @@
     <ClInclude Include="vorbis\include\vorbis\vorbisfile.h" />
     <ClInclude Include="vorbis\lib\window.h" />
     <None Include="vorbis\win32\vorbis.def" />
+    <CopyFiles Include="$(ProjectDir)\vorbis\include\vorbis\*.*" OutputFolder="$(ProjectDir)\include\vorbis\" />
   </ItemGroup>
 </Project>

@@ -225,5 +225,7 @@
       <ExcludedFromBuild Condition="'$(Platform)'=='x64'">true</ExcludedFromBuild>
     </GAS>
     <None Include="libmpg123\src\libmpg123\mpg123.h.in" />
+    <CopyFiles Include="libmpg123\ports\MSVC++\*.*" OutputFolder="$(ProjectDir)\include\libmpg123" />
+    <CopyFiles Include="libmpg123\src\libmpg123\mpg123.h.in" OutputFile="$(ProjectDir)\include\mpg123.h.in" />
   </ItemGroup>
 </Project>

@@ -29,12 +29,12 @@
     <ClCompile>
       <PreprocessorDefinitions>CURL_DISABLE_LDAP;USE_OPENSSL;WIN32;_WINDOWS;BUILDING_LIBCURL;CURL_HIDDEN_SYMBOLS;_WIN32_WINNT=0x0501;HAVE_CONFIG_H;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_USRDLL;libcurl_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4090;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-	  <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);%(ProjectDir)curl\lib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);%(ProjectDir)curl\lib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies Condition="$(UseDebugLibraries)==true">zdll-ng_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalDependencies Condition="$(UseDebugLibraries)!=true">zdll-ng.lib;%(AdditionalDependencies)</AdditionalDependencies>
-	  <AdditionalDependencies>Ws2_32.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Ws2_32.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

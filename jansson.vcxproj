@@ -25,15 +25,7 @@
   <ImportGroup Label="PropertySheets">
     <Import Project="Base.props" />
   </ImportGroup>
-  <PropertyGroup>
-    <ExtensionsToDeleteOnClean>$(ProjectDir)\jansson.h;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
-  </PropertyGroup>
   <ItemDefinitionGroup>
-    <PreBuildEvent>
-      <Command>
-copy /y $(ProjectDir)\jansson\src\jansson.h $(ProjectDir)\jansson.h
-%(Command)</Command>
-    </PreBuildEvent>
     <ClCompile>
       <PreprocessorDefinitions>HAVE_CONFIG_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4090;%(DisableSpecificWarnings)</DisableSpecificWarnings>
@@ -62,5 +54,6 @@ copy /y $(ProjectDir)\jansson\src\jansson.h $(ProjectDir)\jansson.h
     <ClCompile Include="jansson\src\utf.c" />
     <ClCompile Include="jansson\src\value.c" />
     <None Include="jansson\src\jansson.def" />
+    <CopyFiles Include="$(ProjectDir)\jansson\src\jansson.h" OutputFile="$(ProjectDir)\include\jansson.h" />
   </ItemGroup>
 </Project>

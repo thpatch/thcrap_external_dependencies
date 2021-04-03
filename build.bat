@@ -13,7 +13,7 @@ powershell -Command "(gc makefile) -replace 'win32n', 'gaswin' | Out-File -encod
 
 nmake
 @cd ..
-copy openssl\libcrypto.lib bin\libcrypto.lib
-copy openssl\libssl.lib bin\libssl.lib
-copy openssl\libcrypto-1_1.dll bin\libcrypto-1_1.dll
-copy openssl\libssl-1_1.dll bin\libssl-1_1.dll
+copy /y openssl\libcrypto.lib bin\libcrypto.lib
+copy /y openssl\libssl.lib bin\libssl.lib
+copy /y openssl\libcrypto-1_1.dll bin\libcrypto-1_1.dll
+copy /y openssl\libssl-1_1.dll bin\libssl-1_1.dll

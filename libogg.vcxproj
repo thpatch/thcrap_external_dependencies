@@ -42,5 +42,6 @@
     <ClInclude Include="ogg\include\ogg\ogg.h" />
     <ClInclude Include="ogg\include\ogg\os_types.h" />
     <None Include="ogg\win32\ogg.def" />
+    <CopyFiles Include="$(ProjectDir)\ogg\include\ogg\*.*" OutputFolder="$(ProjectDir)\include\ogg\" />
   </ItemGroup>
 </Project>
