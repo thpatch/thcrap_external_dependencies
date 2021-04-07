@@ -53,6 +53,7 @@
     <ClCompile Include="jansson\src\strconv.c" />
     <ClCompile Include="jansson\src\utf.c" />
     <ClCompile Include="jansson\src\value.c" />
+    <ClCompile Include="jansson\src\version.c" />
     <None Include="jansson\src\jansson.def" />
     <CopyFiles Include="$(ProjectDir)\jansson\src\jansson.h" OutputFile="$(ProjectDir)\include\jansson.h" />
   </ItemGroup>
