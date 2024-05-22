@@ -34,3 +34,6 @@ copy /y fribidi\build\lib\fribidi.lib   bin\fribidi.lib
 copy /y fribidi\build\lib\fribidi-0.dll bin\fribidi-0.dll
 copy /y fribidi\build\lib\fribidi.exp   bin\fribidi.exp
 copy /y fribidi\build\lib\fribidi-0.pdb bin\fribidi-0.pdb
+if not exist fribidi_includes mkdir fribidi_includes
+copy /y fribidi\build\lib\fribidi-config.h fribidi_includes\fribidi-config.h
+copy /y fribidi\build\gen.tab\fribidi-unicode-version.h fribidi_includes\fribidi-unicode-version.h
