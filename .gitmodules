@@ -28,3 +28,6 @@
 [submodule "curl"]
 	path = curl
 	url = https://github.com/curl/curl
+[submodule "fribidi"]
+	path = fribidi
+	url = https://github.com/fribidi/fribidi

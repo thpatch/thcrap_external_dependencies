@@ -9,12 +9,13 @@ Note that this repository already contains prebuilt binaries. If you just want t
 ### Get thcrap
 `git clone --recursive https://github.com/thpatch/thcrap.git`
 
-### Build OpenSSL
+### Build OpenSSL and FriBidi
 1. Install [Perl](https://www.perl.org/get.html) (I'm using Strawberry Perl, it works for me), make sure it have been added to the PATH.
 2. Install [NASM](https://www.nasm.us/), add it to the PATH.
-3. Open a Visual Studio comand prompt. If you use Visual Studio 2019 with the v141_xp tools installed, you can find "x86 Native Tools Command Prompt for VS 2019" in the Start menu.
-4. `cd ........\thcrap\libs\external_deps`
-5. `.\build.bat`
+3. Install [Meson](https://github.com/mesonbuild/meson/releases)
+4. Open a Visual Studio comand prompt. If you use Visual Studio 2019 with the v141_xp tools installed, you can find "x86 Native Tools Command Prompt for VS 2019" in the Start menu.
+5. `cd ........\thcrap\libs\external_deps`
+6. `.\build.bat`
 
 ### Build everything else
 1. Go to thcrap\libs\external_deps
