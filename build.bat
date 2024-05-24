@@ -26,7 +26,8 @@ copy /y openssl\libssl-1_1.dll bin\libssl-1_1.dll
 @rem FriBidi
 @cd fribidi
 
-meson setup build -Ddocs=false
+del /s /q build
+meson setup build -Ddocs=false --buildtype release
 meson compile -C build
 
 @cd ..
