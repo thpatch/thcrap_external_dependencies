@@ -10,6 +10,12 @@
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
   <PropertyGroup>
+	<BitsSuffix Condition="'$(Platform)'=='x64'">_64</BitsSuffix>
+    <!--<DebugSuffix Condition="$(UseDebugLibraries)==true">_d</DebugSuffix>-->
+    <DebugSuffix Condition="'$(Configuration)'=='Debug Dynamic' Or '$(Configuration)'=='Debug Static'">_d</DebugSuffix>
+    <Suffix>$(BitsSuffix)$(DebugSuffix)</Suffix>
+  </PropertyGroup>
+  <PropertyGroup>
     <ConfigurationType Condition="'$(Configuration)'=='Debug Dynamic'">DynamicLibrary</ConfigurationType>
     <ConfigurationType Condition="'$(Configuration)'=='Release Dynamic'">DynamicLibrary</ConfigurationType>
     <ConfigurationType Condition="'$(Configuration)'=='Debug Static'">StaticLibrary</ConfigurationType>
@@ -18,8 +24,7 @@
     <UseDebugLibraries Condition="'$(Configuration)'=='Debug Dynamic'">true</UseDebugLibraries>
     <UseDebugLibraries Condition="'$(Configuration)'=='Debug Static'">true</UseDebugLibraries>
 
-    <TargetName Condition="$(UseDebugLibraries)==true">$(RootNamespace)_d</TargetName>
-    <TargetName Condition="$(UseDebugLibraries)!=true">$(RootNamespace)</TargetName>
+    <TargetName>$(RootNamespace)$(Suffix)</TargetName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration">
@@ -51,6 +56,7 @@
       <!-- This warning is inside shlobj.h -->
       <DisableSpecificWarnings>4091;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>UNICODE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+	  <AdditionalOptions>/utf-8 /Zc:__cplusplus /Zc:externConstexpr /Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

@@ -9,6 +9,14 @@
       <Configuration>Debug Dynamic</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Dynamic|x64">
+      <Configuration>Debug Dynamic</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Static|x64">
+      <Configuration>Debug Static</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release Static|Win32">
       <Configuration>Release Static</Configuration>
       <Platform>Win32</Platform>
@@ -16,6 +24,14 @@
     <ProjectConfiguration Include="Release Dynamic|Win32">
       <Configuration>Release Dynamic</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Dynamic|x64">
+      <Configuration>Release Dynamic</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Static|x64">
+      <Configuration>Release Static</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -48,8 +64,7 @@
       <WarningLevel>Level4</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies Condition="$(UseDebugLibraries)==true">zdll-ng_d.lib</AdditionalDependencies>
-      <AdditionalDependencies Condition="$(UseDebugLibraries)!=true">zdll-ng.lib</AdditionalDependencies>
+      <AdditionalDependencies>zdll-ng$(Suffix).lib</AdditionalDependencies>
       <Version>16</Version>
     </Link>
   </ItemDefinitionGroup>
@@ -71,13 +86,13 @@
     <ClCompile Include="libpng\pngwrite.c" />
     <ClCompile Include="libpng\pngwtran.c" />
     <ClCompile Include="libpng\pngwutil.c" />
-    <None Include="libpng/pngdebug.h "/>
-    <None Include="libpng/pnginfo.h "/>
-    <None Include="libpng/pngpriv.h "/>
-    <None Include="libpng/pngstruct.h "/>
-    <None Include="png.h "/>
-    <None Include="pngconf.h "/>
-    <None Include="pnglibconf.h "/>
+    <None Include="libpng/pngdebug.h " />
+    <None Include="libpng/pnginfo.h " />
+    <None Include="libpng/pngpriv.h " />
+    <None Include="libpng/pngstruct.h " />
+    <None Include="png.h " />
+    <None Include="pngconf.h " />
+    <None Include="pnglibconf.h " />
     <ResourceCompile Include="libpng\scripts\pngwin.rc">
       <ExcludedFromBuild Condition="'$(ConfigurationType)'=='StaticLibrary'">true</ExcludedFromBuild>
     </ResourceCompile>

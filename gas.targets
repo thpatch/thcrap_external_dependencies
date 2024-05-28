@@ -20,7 +20,7 @@
     AfterTargets="$(GASAfterTargets)"
     Condition="'@(GAS)' != ''"
     DependsOnTargets="$(GASDependsOn);ComputeGASOutput"
-    Outputs="@(GAS->'%(ObjectFile)')"
+    Outputs="%(GAS.ObjectFile)"
     Inputs="@(GAS);%(GAS.AdditionalDependencies);$(MSBuildProjectFile)">
     <ItemGroup
       Condition="'@(SelectedFiles)' != ''">
@@ -35,57 +35,36 @@
         <Source>@(GAS, '|')</Source>
       </GAS_tlog>
     </ItemGroup>
-    <Message
-      Condition="'@(GAS)' != '' and '%(GAS.ExcludedFromBuild)' != 'true'"
-      Importance="High"
-      Text="%(GAS.ExecutionDescription)" />
     <WriteLinesToFile
       Condition="'@(GAS_tlog)' != '' and '%(GAS_tlog.ExcludedFromBuild)' != 'true'"
       File="$(IntDir)$(ProjectName).write.1.tlog"
       Lines="^%(GAS_tlog.Source);@(GAS_tlog->'%(Fullpath)')" />
     <GAS
-      Condition="'@(GAS)' != '' and '%(GAS.ExcludedFromBuild)' != 'true'"
+      Condition="'%(GAS.Identity)' != '' and '%(GAS.ExcludedFromBuild)' != 'true'"
       CommandLineTemplate="%(GAS.CommandLineTemplate)"
       IncludePaths="%(GAS.IncludePaths)"
       Defines="%(GAS.Defines)"
+      CDefines="%(GAS.CDefines)"
       SAFESEH="%(GAS.SAFESEH)"
       ObjectFile="%(GAS.ObjectFile)"
       AdditionalOptions="%(GAS.AdditionalOptions)"
-      Inputs="@(GAS)" />
+      Inputs="%(GAS.Identity)" />
   </Target>
   <PropertyGroup>
     <ComputeLinkInputsTargets>
-            $(ComputeLinkInputsTargets);
-            ComputeGASOutput;
-          </ComputeLinkInputsTargets>
+      $(ComputeLinkInputsTargets);
+      ComputeGASOutput;
+    </ComputeLinkInputsTargets>
     <ComputeLibInputsTargets>
-            $(ComputeLibInputsTargets);
-            ComputeGASOutput;
-          </ComputeLibInputsTargets>
+      $(ComputeLibInputsTargets);
+      ComputeGASOutput;
+    </ComputeLibInputsTargets>
   </PropertyGroup>
-  <Target
-    Name="ComputeGASOutput"
-    Condition="'@(GAS)' != ''">
+  <Target Name="ComputeGASOutput" Condition="'@(GAS)' != ''">
     <ItemGroup>
-      <GASDirsToMake
-        Condition="'@(GAS)' != '' and '%(GAS.ExcludedFromBuild)' != 'true' and !HasTrailingSlash('%(GAS.ObjectFile)')"
-        Include="%(GAS.ObjectFile)" />
-      <Link
-        Include="%(GASDirsToMake.Identity)"
-        Condition="'%(Extension)'=='.obj' or '%(Extension)'=='.res' or '%(Extension)'=='.rsc' or '%(Extension)'=='.lib'" />
-      <Lib
-        Include="%(GASDirsToMake.Identity)"
-        Condition="'%(Extension)'=='.obj' or '%(Extension)'=='.res' or '%(Extension)'=='.rsc' or '%(Extension)'=='.lib'" />
-      <ImpLib
-        Include="%(GASDirsToMake.Identity)"
-        Condition="'%(Extension)'=='.obj' or '%(Extension)'=='.res' or '%(Extension)'=='.rsc' or '%(Extension)'=='.lib'" />
+      <Link Include="@(GAS-&gt;Metadata('ObjectFile')-&gt;Distinct()-&gt;ClearMetadata())" Condition="'%(GAS.ExcludedFromBuild)' != 'true'"/>
+      <Lib Include="@(GAS-&gt;Metadata('ObjectFile')-&gt;Distinct()-&gt;ClearMetadata())" Condition="'%(GAS.ExcludedFromBuild)' != 'true'"/>
+      <ImpLib Include="@(GAS-&gt;Metadata('ObjectFile')-&gt;Distinct()-&gt;ClearMetadata())" Condition="'%(GAS.ExcludedFromBuild)' != 'true'"/>
     </ItemGroup>
-    <ItemGroup>
-      <GASDirsToMake
-        Condition="'@(GAS)' != '' and '%(GAS.ExcludedFromBuild)' != 'true' and HasTrailingSlash('%(GAS.ObjectFile)')"
-        Include="@(GAS->'%(ObjectFile)%(Filename).obj')" />
-    </ItemGroup>
-    <MakeDir
-      Directories="@(GASDirsToMake->'%(RootDir)%(Directory)')" />
   </Target>
 </Project>

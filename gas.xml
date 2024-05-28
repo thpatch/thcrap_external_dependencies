@@ -45,10 +45,18 @@
       HelpContext="0"
       DisplayName="C Preprocessor - Include Paths"
       Description="Set the paths for any additional include files. (-I)"
-      Switch="-I &quot;[value]&quot;" />
+      Switch='-I "[value]"' />
 
     <StringListProperty
       Name="Defines"
+      Subcategory="Configuration"
+      HelpContext="0"
+      DisplayName="GAS Preprocessor - Pre-Defined Symbols"
+      Description="Specify pre-defined symbols ('symbol'). (--defsym)"
+      Switch='--defsym [value]=1' />
+
+    <StringListProperty
+      Name="CDefines"
       Subcategory="Configuration"
       HelpContext="0"
       DisplayName="C Preprocessor - Pre-Defined Symbols"
@@ -68,7 +76,7 @@
       HelpContext="0"
       DisplayName="Object File Name"
       Description="Select the output file name. (-o)"
-      Switch="-o &quot;[value]&quot;" />
+      Switch='-o "[value]"' />
 
     <StringProperty
       Name="CommandLineTemplate"
