@@ -13,7 +13,10 @@ Note that this repository already contains prebuilt binaries. If you just want t
 1. Install [Perl](https://www.perl.org/get.html) (I'm using Strawberry Perl, it works for me), make sure it have been added to the PATH.
 2. Install [NASM](https://www.nasm.us/), add it to the PATH.
 3. Install [Meson](https://github.com/mesonbuild/meson/releases)
-4. Open a Visual Studio comand prompt. If you use Visual Studio 2019 with the v141_xp tools installed, you can find "x86 Native Tools Command Prompt for VS 2019" in the Start menu.
+4. Open a Visual Studio x86 comand prompt. If you use Visual Studio 2019 with the v141_xp tools installed, you can find "x86 Native Tools Command Prompt for VS 2019" in the Start menu.
+5. `cd ........\thcrap\libs\external_deps`
+6. `.\build.bat`
+4. Open a Visual Studio x64 comand prompt. If you use Visual Studio 2019 with the v141_xp tools installed, you can find "x64 Native Tools Command Prompt for VS 2019" in the Start menu.
 5. `cd ........\thcrap\libs\external_deps`
 6. `.\build.bat`
 
