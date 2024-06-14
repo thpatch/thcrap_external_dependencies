@@ -91,9 +91,9 @@ function Build-FriBidi {
     }
     
     # The generated includes are the same for every build target, so we just overwrite what is there.
-    Remove-Item fribidi_includes -Recurse -ErrorAction SilentlyContinue
-    New-Item fribidi_includes -ItemType Directory
-    Copy-Item -Recurse fribidi\build\out\include\fribidi -Destination fribidi_includes\fribidi
+    Remove-Item include\fribidi -Recurse -ErrorAction SilentlyContinue
+    New-Item include -ItemType Directory -ErrorAction SilentlyContinue
+    Copy-Item -Recurse fribidi\build\out\include\fribidi -Destination include\fribidi
 }
 
 Build-Openssl -Arch $Env:VSCMD_ARG_TGT_ARCH -Target Debug
