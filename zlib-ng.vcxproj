@@ -104,11 +104,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="zlib-ng\adler32.c" />
+    <ClCompile Include="zlib-ng\chunkset.c" />
+    <ClCompile Include="zlib-ng\compare258.c" />
     <ClCompile Include="zlib-ng\compress.c" />
     <ClCompile Include="zlib-ng\crc32.c" />
+    <ClCompile Include="zlib-ng\crc32_comb.c" />
     <ClCompile Include="zlib-ng\deflate.c" />
     <ClCompile Include="zlib-ng\deflate_fast.c" />
     <ClCompile Include="zlib-ng\deflate_medium.c" />
+    <ClCompile Include="zlib-ng\deflate_quick.c" />
     <ClCompile Include="zlib-ng\deflate_slow.c" />
     <ClCompile Include="zlib-ng\functable.c" />
     <ClCompile Include="zlib-ng\gzclose.c">
@@ -127,7 +131,7 @@
     <ClCompile Include="zlib-ng\inffast.c" />
     <ClCompile Include="zlib-ng\inflate.c" />
     <ClCompile Include="zlib-ng\inftrees.c" />
-    <ClCompile Include="zlib-ng\match.c" />
+    <ClCompile Include="zlib-ng\insert_string.c" />
     <ClCompile Include="zlib-ng\trees.c" />
     <ClCompile Include="zlib-ng\uncompr.c" />
     <ClCompile Include="zlib-ng\zutil.c" />

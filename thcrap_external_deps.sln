@@ -21,11 +21,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libvorbis_decode", "libvorb
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libmpg123", "libmpg123.vcxproj", "{67CAA87B-7CF1-4F93-BB67-21C513F40803}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcurl", "libcurl.vcxproj", "{2B8673B5-A043-4011-9830-7D5005DD37BE}"
-	ProjectSection(ProjectDependencies) = postProject
-		{EE4A787C-16D5-4192-870F-E1461AFFA469} = {EE4A787C-16D5-4192-870F-E1461AFFA469}
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -82,12 +77,6 @@ Global
 		{67CAA87B-7CF1-4F93-BB67-21C513F40803}.Release|Win32.Build.0 = Release Static|Win32
 		{67CAA87B-7CF1-4F93-BB67-21C513F40803}.Release|x64.ActiveCfg = Release Static|x64
 		{67CAA87B-7CF1-4F93-BB67-21C513F40803}.Release|x64.Build.0 = Release Static|x64
-		{2B8673B5-A043-4011-9830-7D5005DD37BE}.Debug|Win32.ActiveCfg = Debug Dynamic|Win32
-		{2B8673B5-A043-4011-9830-7D5005DD37BE}.Debug|Win32.Build.0 = Debug Dynamic|Win32
-		{2B8673B5-A043-4011-9830-7D5005DD37BE}.Debug|x64.ActiveCfg = Debug Dynamic|x64
-		{2B8673B5-A043-4011-9830-7D5005DD37BE}.Release|Win32.ActiveCfg = Release Dynamic|Win32
-		{2B8673B5-A043-4011-9830-7D5005DD37BE}.Release|Win32.Build.0 = Release Dynamic|Win32
-		{2B8673B5-A043-4011-9830-7D5005DD37BE}.Release|x64.ActiveCfg = Release Dynamic|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
